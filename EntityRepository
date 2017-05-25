@@ -35,35 +35,35 @@ namespace <#namespace#>.Data.Repository
             return _<#classNameLower#>;
         }
 
-		 public IEnumerable<dynamic> GetDataItem(<#className#>Filter filters)
+		 public async Task<IEnumerable<dynamic>>(<#className#>Filter filters)
         {
-            var querybase = this.GetBySimplefilters(filters).Select(_ => new
+            var querybase = await this.ToListAsync(this.GetBySimplefilters(filters).Select(_ => new
             {
                 Id = _.<#KeyName#>
 
-            }).ToList(); 
+            })); 
 
             return querybase;
         }
 
-        public IEnumerable<dynamic> GetDataListCustom(<#className#>Filter filters)
+        public async Task<IEnumerable<dynamic>> GetDataListCustom(<#className#>Filter filters)
         {
-            var querybase = this.GetBySimplefilters(filters).Select(_ => new
+            var querybase = await this.ToListAsync(this.GetBySimplefilters(filters).Select(_ => new
             {
                 Id = _.<#KeyName#>,
 
-            }).ToList();
+            }));
 
             return querybase;
         }
 
-        public dynamic GetDataCustom(<#className#>Filter filters)
+        public async Task<dynamic> GetDataCustom(<#className#>Filter filters)
         {
-            var querybase = this.GetBySimplefilters(filters).Select(_ => new
+            var querybase = await this.ToListAsync(this.GetBySimplefilters(filters).Select(_ => new
             {
                 Id = _.<#KeyName#>,
 
-            }).SingleOrDefault();
+            }));
 
             return querybase;
         }
@@ -75,7 +75,7 @@ namespace <#namespace#>.Data.Repository
                 return source.Select(_ => new
                 {
 
-                }).SingleOrDefault();
+                }));
             }
             return source;
         }

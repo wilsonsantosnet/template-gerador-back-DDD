@@ -6,6 +6,7 @@ using <#namespace#>.Domain.Entitys;
 using <#namespace#>.Domain.Filter;
 using <#namespace#>.Domain.Interfaces.Services;
 using <#namespace#>.Dto;
+using System.Threading.Tasks;
 
 namespace <#namespace#>.Application
 {
@@ -37,15 +38,16 @@ namespace <#namespace#>.Application
         }
 
 
-        protected override <#className#> AlterDomainWithDto<TDS>(TDS dto)
+        protected override async Task<<#className#>> AlterDomainWithDto<TDS>(TDS dto)
         {
 			var <#classNameLower#> = dto as <#className#>Dto;
-            var result = this._serviceBase.GetOne(<#GetOneFilterKeys#>);
-            
+            var result = await this._serviceBase.GetOne(<#GetOneFilterKeys#>);
+
             //Inicio da Transferencia dos valores
            
 
             //Fim da Transferencia dos valores
+
             return result;
         }
 

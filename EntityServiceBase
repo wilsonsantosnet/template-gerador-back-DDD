@@ -6,7 +6,7 @@ using <#namespace#>.Domain.Filter;
 using <#namespace#>.Domain.Interfaces.Repository;
 using <#namespace#>.Domain.Validations;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace <#namespace#>.Domain.Services
 {
@@ -19,18 +19,18 @@ namespace <#namespace#>.Domain.Services
             this._rep = rep;
         }
 
-        public virtual <#className#> GetOne(<#className#>Filter filters)
+        public virtual async Task<<#className#>> GetOne(<#className#>Filter filters)
         {
-            return this._rep.GetById(filters);
+            return await this._rep.GetById(filters);
         }
 
-        public virtual IEnumerable<<#className#>> GetByFilters(<#className#>Filter filters)
+        public virtual async Task<IEnumerable<<#className#>>> GetByFilters(<#className#>Filter filters)
         {
             var queryBase = this._rep.GetBySimplefilters(filters);
-            return queryBase.ToList();
+            return await this._rep.ToListAsync(queryBase);
         }
 
-        public virtual PaginateResult<<#className#>> GetByFiltersPaging(<#className#>Filter filters)
+        public virtual Task<PaginateResult<<#className#>>> GetByFiltersPaging(<#className#>Filter filters)
         {
             var queryBase = this._rep.GetBySimplefilters(filters);
             return this._rep.PagingAndDefineFields(filters, queryBase);
@@ -64,9 +64,9 @@ namespace <#namespace#>.Domain.Services
             return base._validationWarning;
         }
 
-        public override <#className#> Save(<#className#> <#classNameLower#>, bool questionToContinue = false)
+        public override async Task<<#className#>> Save(<#className#> <#classNameLower#>, bool questionToContinue = false)
         {
-            var <#classNameLower#>Old = this.GetOne(<#GetOneFilterKeys#>);
+            var <#classNameLower#>Old = await this.GetOne(<#GetOneFilterKeys#>);
             if (questionToContinue)
             {
                 if (base.Continue(<#classNameLower#>, <#classNameLower#>Old) == false)
@@ -76,9 +76,9 @@ namespace <#namespace#>.Domain.Services
             return this.SaveWithValidation(<#classNameLower#>, <#classNameLower#>Old);
         }
 
-        public override <#className#> SavePartial(<#className#> <#classNameLower#>, bool questionToContinue = false)
+        public override async Task<<#className#>> SavePartial(<#className#> <#classNameLower#>, bool questionToContinue = false)
         {
-            var <#classNameLower#>Old = this.GetOne(<#GetOneFilterKeys#>);
+            var <#classNameLower#>Old = await this.GetOne(<#GetOneFilterKeys#>);
             if (questionToContinue)
             {
                 if (base.Continue(<#classNameLower#>, <#classNameLower#>Old) == false)
