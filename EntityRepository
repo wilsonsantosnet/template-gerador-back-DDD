@@ -6,6 +6,7 @@ using <#namespace#>.Domain.Filter;
 using <#namespace#>.Domain.Interfaces.Repository;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace <#namespace#>.Data.Repository
 {
@@ -26,16 +27,15 @@ namespace <#namespace#>.Data.Repository
             return querybase;
         }
 
-        public <#className#> GetById(<#className#>Filter model)
+        public async Task<<#className#>> GetById(<#className#>Filter model)
         {
-            var _<#classNameLower#> = this.GetAll(this.DataAgregation(model))
-               <#WhereSingle#>
-               .SingleOrDefault();
+            var _<#classNameLower#> = await this.SingleOrDefaultAsync(this.GetAll(this.DataAgregation(model))
+               <#WhereSingle#>);
 
             return _<#classNameLower#>;
         }
 
-		 public async Task<IEnumerable<dynamic>>(<#className#>Filter filters)
+		 public async Task<IEnumerable<dynamic>> GetDataItem(<#className#>Filter filters)
         {
             var querybase = await this.ToListAsync(this.GetBySimplefilters(filters).Select(_ => new
             {
@@ -75,7 +75,7 @@ namespace <#namespace#>.Data.Repository
                 return source.Select(_ => new
                 {
 
-                }));
+                });
             }
             return source;
         }

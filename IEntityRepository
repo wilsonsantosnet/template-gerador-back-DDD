@@ -11,7 +11,7 @@ namespace <#namespace#>.Domain.Interfaces.Repository
     {
         IQueryable<<#className#>> GetBySimplefilters(<#className#>Filter filters);
 
-        <#className#> GetById(<#className#>Filter <#classNameLower#>);
+        Task<<#className#>> GetById(<#className#>Filter <#classNameLower#>);
 		
         Task<IEnumerable<dynamic>> GetDataItem(<#className#>Filter filters);
 

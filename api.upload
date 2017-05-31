@@ -46,7 +46,7 @@ namespace <#namespace#>.Api.Controllers
                         var fileName = string.Format("{0}{1}", Guid.NewGuid().ToString(), Path.GetExtension(file.FileName));
                         using (var fileStream = new FileStream(Path.Combine(uploads, fileName), FileMode.Create))
                         {
-                            file.CopyToAsync(fileStream);
+                            await file.CopyToAsync(fileStream);
                         }
                         fileSuccess.Add(fileName);
                     }
@@ -56,7 +56,26 @@ namespace <#namespace#>.Api.Controllers
             }
             catch (Exception ex)
             {
-                return result.ReturnCustomException(ex, "<#namespace#> - Projeto");
+                return result.ReturnCustomException(ex, "<#namespace#> - Upload");
+            }
+        }
+
+		[HttpDelete("{folder}/{fileName}")]
+        public async Task<IActionResult> Delete(string folder, string fileName)
+        {
+            var result = new HttpResult<List<string>>(this._logger);
+            try
+            {
+                var uploads = Path.Combine(this._env.ContentRootPath, folder);
+                await Task.Run(() => {
+                    new FileInfo(Path.Combine(uploads, fileName)).Delete();
+                });
+                return result.ReturnCustomResponse();
+
+            }
+            catch (Exception ex)
+            {
+                return result.ReturnCustomException(ex, "SmartSecretary - upload");
             }
         }
     }

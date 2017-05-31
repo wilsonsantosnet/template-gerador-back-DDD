@@ -8,8 +8,7 @@ namespace <#namespace#>.Domain.Validations
     {
         public <#className#>AptoParaCadastroValidation(I<#className#>Repository rep)
         {
-
-            //base.Add("Key", new Rule<<#className#>>(Instance of RuleClassName,"message"));
+            //base.Add(Guid.NewGuid().ToString(), new Rule<<#className#>>(Instance of RuleClassName,"message for user"));
         }
 
     }

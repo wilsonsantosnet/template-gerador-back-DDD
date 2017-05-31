@@ -54,12 +54,12 @@ namespace <#namespace#>.Domain.Services
             return base._validationResult;
         }
 
-        public virtual ValidationConfirm GetDomainConfirm(FilterBase filters = null)
+        public virtual ConfirmEspecificationResult GetDomainConfirm(FilterBase filters = null)
         {
             return base._validationConfirm;
         }
 
-        public virtual ValidationWarning GetDomainWarning(FilterBase filters = null)
+        public virtual WarningSpecificationResult GetDomainWarning(FilterBase filters = null)
         {
             return base._validationWarning;
         }
@@ -115,16 +115,16 @@ namespace <#namespace#>.Domain.Services
                 return <#classNameLower#>;
             }
 
-            var validationResult = new <#className#>AptoParaCadastroValidation(this._rep).Validate(<#classNameLower#>);
-            base._validationResult = validationResult;
+            base._validationResult  = new <#className#>AptoParaCadastroValidation(this._rep).Validate(<#classNameLower#>);
+			base._validationWarning  = new <#className#>AptoParaCadastroWarning(this._rep).Validate(<#classNameLower#>);
 
-            if (!validationResult.IsValid)
+            if (!base._validationResult.IsValid)
             {
                 return <#classNameLower#>;
             }
             
             <#classNameLower#> = this.SaveDefault(<#classNameLower#>, <#classNameLower#>Old);
-            validationResult.Message = "<#className#> cadastrado com sucesso :)";
+            base._validationResult.Message = "<#className#> cadastrado com sucesso :)";
 
             base._cacheHelper.ClearCache();
             return <#classNameLower#>;
