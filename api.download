@@ -7,8 +7,9 @@ using Microsoft.Extensions.Logging;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using System.Threading.Tasks;
+using <#namespace#>.Api.Controllers;
 
-namespace SmartSecretary.Api.Controllers
+namespace <#namespace#>.Api.Controllers
 {
     [Route("api/document/download")]
     public class DownloadController : Controller
