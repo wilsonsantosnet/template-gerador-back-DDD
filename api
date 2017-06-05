@@ -8,7 +8,6 @@ using <#namespace#>.Domain.Filter;
 using <#namespace#>.Dto;
 using Common.API;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 
 namespace <#namespace#>.Api.Controllers
 {
