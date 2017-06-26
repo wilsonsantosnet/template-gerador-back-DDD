@@ -1,4 +1,4 @@
-﻿using Common.Domain.Base;
+using Common.Domain.Base;
 using IdentityModel;
 using IdentityServer4.Models;
 using Newtonsoft.Json;
@@ -37,13 +37,8 @@ namespace Sso.Server.Api
             {
                 new Claim(JwtClaimTypes.Name, name),
                 new Claim(JwtClaimTypes.Email, email),
-<<<<<<< HEAD
                 new Claim("tools", _toolsForAdmin),
                 new Claim("role", "admin"),
-=======
-                new Claim("tools",_toolsForAdmin ),
-                new Claim("role","admin"),
->>>>>>> 5ae6e80f2ab999409beebe3682d0b1fb5207d4cf
             };
         }
 
@@ -70,28 +65,16 @@ namespace Sso.Server.Api
         {
             return new List<ApiResource>
             {
-<<<<<<< HEAD
                 new ApiResource("ssosa", "Sso Basic")
-=======
-                new ApiResource("ssosm", "Sso Basic")
->>>>>>> 5ae6e80f2ab999409beebe3682d0b1fb5207d4cf
                 {
                     Scopes = new List<Scope>()
                     {
                         new Scope
                         {
                             UserClaims = new List<string> {"name", "openid", "email", "role", "tools"},
-<<<<<<< HEAD
                             Name = "ssosa",
                             Description = "sso basic",
                         }
-=======
-                            Name = "ssosm",
-                            Description = "sso basic",
-                        },
-                        new Scope("financial.read"),
-                        new Scope("financial.write"),
->>>>>>> 5ae6e80f2ab999409beebe3682d0b1fb5207d4cf
                     }
                 }
             };
@@ -124,11 +107,7 @@ namespace Sso.Server.Api
                         StandardScopes.OpenId,
                         StandardScopes.Profile,
                         StandardScopes.Email,
-<<<<<<< HEAD
                         "ssosa"
-=======
-                        "ssosm"
->>>>>>> 5ae6e80f2ab999409beebe3682d0b1fb5207d4cf
                     }
                 },
           
