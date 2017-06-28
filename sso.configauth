@@ -96,7 +96,7 @@ namespace Sso.Server.Api
             {
                 new Client
                 {
-                    ClientId = "Seed",
+                    ClientId = "<#contextName#>",
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                     ClientSecrets =
                     {

@@ -13,10 +13,12 @@ namespace <#namespace#>.Domain.Services
     public class <#className#>ServiceBase : ServiceBase<<#className#>>
     {
         protected readonly I<#className#>Repository _rep;
-        public <#className#>ServiceBase(I<#className#>Repository rep, ICache cache)
+
+        public <#className#>ServiceBase(I<#className#>Repository rep, ICache cache, CurrentUser user)
             : base(cache)
         {
             this._rep = rep;
+			this._user = user;
         }
 
         public virtual async Task<<#className#>> GetOne(<#className#>Filter filters)
@@ -137,18 +139,17 @@ namespace <#namespace#>.Domain.Services
 
         protected virtual <#className#> SaveDefault(<#className#> <#classNameLower#>, <#className#> <#classNameLower#>Old)
         {
+			
+			<#AuditDefault#>
+
             var isNew = <#classNameLower#>Old.IsNull();
             if (isNew)
-            {
-				<#setUserCreate#>
                 <#classNameLower#> = this._rep.Add(<#classNameLower#>);
-            }
             else
             {
-				<#setUserCreateOld#>
-				<#setUserUpdate#>
                 <#classNameLower#> = this._rep.Update(<#classNameLower#>);
             }
+
 
             return <#classNameLower#>;
         }
