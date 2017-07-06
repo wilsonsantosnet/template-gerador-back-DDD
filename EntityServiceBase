@@ -94,6 +94,11 @@ namespace <#namespace#>.Domain.Services
         {
             <#classNameLower#> = this.SaveDefault(<#classNameLower#>, <#classNameLower#>Old);
 
+			if (base._validationResult.IsNotNull() && !base._validationResult.IsValid)
+            {
+                return <#classNameLower#>;
+            }
+
             base._validationResult = new ValidationSpecificationResult
             {
                 Errors = new List<string>(),
@@ -143,14 +148,19 @@ namespace <#namespace#>.Domain.Services
 			<#AuditDefault#>
 
             var isNew = <#classNameLower#>Old.IsNull();
+			
             if (isNew)
                 <#classNameLower#> = this._rep.Add(<#classNameLower#>);
             else
-            {
-                <#classNameLower#> = this._rep.Update(<#classNameLower#>);
-            }
+				<#classNameLower#> = this.UpdateDefault(<#classNameLower#>);
 
 
+            return <#classNameLower#>;
+        }
+
+		protected virtual <#className#> UpdateDefault(<#className#> <#classNameLower#>)
+        {
+            <#classNameLower#> = this._rep.Update(<#classNameLower#>);
             return <#classNameLower#>;
         }
     }
