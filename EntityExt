@@ -18,15 +18,15 @@ namespace <#namespace#>.Domain.Entitys
 
         }
 
-		public class <#className#>Factory
+		    public class <#className#>Factory
         {
-            public <#className#> GetDefaaultInstance(dynamic data, CurrentUser user)
+            public <#className#> GetDefaultInstance(dynamic data, CurrentUser user)
             {
                 var construction = new <#className#>(<#parametersRequiredConstruction#>);
 
 <#methodsSetersConstruction#>
 
-				return construction;
+				        return construction;
             }
 
         }
