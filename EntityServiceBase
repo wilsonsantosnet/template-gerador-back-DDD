@@ -1,4 +1,4 @@
-﻿using Common.Domain.Base;
+using Common.Domain.Base;
 using Common.Domain.Interfaces;
 using Common.Domain.Model;
 using <#namespace#>.Domain.Entitys;
@@ -68,8 +68,8 @@ namespace <#namespace#>.Domain.Services
 
         public override async Task<<#className#>> Save(<#className#> <#classNameLower#>, bool questionToContinue = false)
         {
-            var <#classNameLower#>Old = await this.GetOne(<#GetOneFilterKeys#>);
-			      var <#classNameLower#>Orchestrated = await this.DomainOrchestration(<#classNameLower#>, <#classNameLower#>Old);
+			var <#classNameLower#>Old = await this.GetOne(<#GetOneFilterKeys#>);
+			var <#classNameLower#>Orchestrated = await this.DomainOrchestration(<#classNameLower#>, <#classNameLower#>Old);
 
             if (questionToContinue)
             {
@@ -83,7 +83,7 @@ namespace <#namespace#>.Domain.Services
         public override async Task<<#className#>> SavePartial(<#className#> <#classNameLower#>, bool questionToContinue = false)
         {
             var <#classNameLower#>Old = await this.GetOne(<#GetOneFilterKeys#>);
-			      var <#classNameLower#>Orchestrated = await this.DomainOrchestration(<#classNameLower#>, <#classNameLower#>Old);
+			var <#classNameLower#>Orchestrated = await this.DomainOrchestration(<#classNameLower#>, <#classNameLower#>Old);
 
             if (questionToContinue)
             {
@@ -98,8 +98,8 @@ namespace <#namespace#>.Domain.Services
         {
             <#classNameLower#> = this.SaveDefault(<#classNameLower#>, <#classNameLower#>Old);
 
-			      if (base._validationResult.IsNotNull() && !base._validationResult.IsValid)
-                return <#classNameLower#>;
+			if (base._validationResult.IsNotNull() && !base._validationResult.IsValid)
+				return <#classNameLower#>;
 
             base._validationResult = new ValidationSpecificationResult
             {
@@ -113,7 +113,7 @@ namespace <#namespace#>.Domain.Services
 
         }
 
-		    protected override <#className#> SaveWithValidation(<#className#> <#classNameLower#>, <#className#> <#classNameLower#>Old)
+		protected override <#className#> SaveWithValidation(<#className#> <#classNameLower#>, <#className#> <#classNameLower#>Old)
         {
             if (!this.DataAnnotationIsValid())
                 return <#classNameLower#>;
@@ -136,21 +136,21 @@ namespace <#namespace#>.Domain.Services
             return <#classNameLower#>;
         }
 
-		    protected virtual void Specifications(<#className#> <#classNameLower#>)
+		protected virtual void Specifications(<#className#> <#classNameLower#>)
         {
             base._validationResult  = new <#className#>AptoParaCadastroValidation(this._rep).Validate(<#classNameLower#>);
-			      base._validationWarning  = new <#className#>AptoParaCadastroWarning(this._rep).Validate(<#classNameLower#>);
+			base._validationWarning  = new <#className#>AptoParaCadastroWarning(this._rep).Validate(<#classNameLower#>);
         }
 
         protected virtual <#className#> SaveDefault(<#className#> <#classNameLower#>, <#className#> <#classNameLower#>Old)
         {
-			      <#AuditDefault#>
+			<#AuditDefault#>
 
             var isNew = <#classNameLower#>Old.IsNull();			
             if (isNew)
                 <#classNameLower#> = this._rep.Add(<#classNameLower#>);
             else
-				        <#classNameLower#> = this.UpdateDefault(<#classNameLower#>);
+				<#classNameLower#> = this.UpdateDefault(<#classNameLower#>);
 
             return <#classNameLower#>;
         }
@@ -161,7 +161,7 @@ namespace <#namespace#>.Domain.Services
             return <#classNameLower#>;
         }
 
-		    protected virtual <#className#> UpdateDefault(<#className#> <#classNameLower#>)
+		protected virtual <#className#> UpdateDefault(<#className#> <#classNameLower#>)
         {
             <#classNameLower#> = this._rep.Update(<#classNameLower#>);
             return <#classNameLower#>;
