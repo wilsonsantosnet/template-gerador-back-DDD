@@ -18,7 +18,7 @@ namespace <#namespace#>.Domain.Services
             : base(cache)
         {
             this._rep = rep;
-			      this._user = user;
+			this._user = user;
         }
 
         public virtual async Task<<#className#>> GetOne(<#className#>Filter filters)
