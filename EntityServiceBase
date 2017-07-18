@@ -148,7 +148,7 @@ namespace <#namespace#>.Domain.Services
 
             var isNew = <#classNameLower#>Old.IsNull();			
             if (isNew)
-                <#classNameLower#> = this._rep.Add(<#classNameLower#>);
+                <#classNameLower#> = this.AddDefault(<#classNameLower#>);
             else
 				<#classNameLower#> = this.UpdateDefault(<#classNameLower#>);
 
