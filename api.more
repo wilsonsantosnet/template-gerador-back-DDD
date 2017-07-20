@@ -27,7 +27,7 @@ namespace <#namespace#>.Api.Controllers
         {
             this._rep = rep;
             this._app = app;
-			this._logger = logger.CreateLogger<<#className#>Controller>();
+			this._logger = logger.CreateLogger<<#className#>MoreController>();
         }
 
         [HttpGet]
