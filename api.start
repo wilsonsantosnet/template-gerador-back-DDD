@@ -12,6 +12,7 @@ using <#namespace#>.Data.Context;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
 using Common.API.Extensions;
+using System.Collections.Generic;
 
 namespace <#namespace#>.Api
 {
