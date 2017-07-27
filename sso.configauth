@@ -28,7 +28,7 @@ namespace Sso.Server.Api
 
             var tools = new List<dynamic>
             {
-                <#claimsforadmin#>
+<#claimsforadmin#>
             };
 
             var _toolsForAdmin = JsonConvert.SerializeObject(tools);
