@@ -62,7 +62,7 @@ namespace <#namespace#>.Api
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IOptions<ConfigSettingsBase> configSettingsBase)
         {
 
-			loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+	    loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
             app.UseDeveloperExceptionPage();
@@ -71,7 +71,7 @@ namespace <#namespace#>.Api
             app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
             {
                 Authority = configSettingsBase.Value.AuthorityEndPoint,
-                ScopeName = "ssosa",
+                AllowedScopes = new List<string> { "ssosa" },
                 RequireHttpsMetadata = false
             });
 
