@@ -90,7 +90,7 @@ namespace Sso.Server.Api
             };
         }
 
-        public static IEnumerable<Client> GetClients()
+        public static IEnumerable<Client> GetClients(ConfigSettingsBase settings)
         {
             return new List<Client>
             {
