@@ -110,6 +110,33 @@ namespace Sso.Server.Api
                         "ssosa"
                     }
                 },
+
+				new Client
+                {
+                    ClientId = "<#contextName#>-spa",
+                    ClientSecrets = { new Secret("segredo".Sha256()) },
+
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowAccessTokensViaBrowser = true,
+
+                    RedirectUris = {
+                        settings.RedirectUris
+                    },
+                    PostLogoutRedirectUris =
+                    {
+                        settings.PostLogoutRedirectUris
+                    },
+
+                    AllowedCorsOrigins = { settings.ClientAuthorityEndPoint },
+
+                    AllowedScopes =
+                    {
+                        StandardScopes.OpenId,
+                        StandardScopes.Profile,
+                        StandardScopes.Email,
+                        "ssosa"
+                    }
+                }
           
             };
         }
