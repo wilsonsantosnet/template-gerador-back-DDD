@@ -28,7 +28,7 @@ namespace Sso.Server.Api
 
             var tools = new List<dynamic>
             {
-                <#claimsforadmin#>
+<#claimsforadmin#>
             };
 
             var _toolsForAdmin = JsonConvert.SerializeObject(tools);
@@ -111,7 +111,7 @@ namespace Sso.Server.Api
                     }
                 },
 
-				new Client
+		new Client
                 {
                     ClientId = "<#contextName#>-spa",
                     ClientSecrets = { new Secret("segredo".Sha256()) },
