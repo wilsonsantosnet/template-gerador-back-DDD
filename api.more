@@ -81,7 +81,7 @@ namespace <#namespace#>.Api.Controllers
 
         }
 
-		[HttpPost]
+	[HttpPut]
         public async Task<IActionResult> Put([FromBody]IEnumerable<<#className#>DtoSpecialized> dtos)
         {
             var result = new HttpResult<<#className#>Dto>(this._logger);
