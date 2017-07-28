@@ -111,7 +111,7 @@ namespace Sso.Server.Api
                     }
                 },
 
-		new Client
+				new Client
                 {
                     ClientId = "<#contextName#>-spa",
                     ClientSecrets = { new Secret("segredo".Sha256()) },
