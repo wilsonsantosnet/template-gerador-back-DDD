@@ -81,5 +81,22 @@ namespace <#namespace#>.Api.Controllers
 
         }
 
+		[HttpPost]
+        public async Task<IActionResult> Put([FromBody]IEnumerable<<#className#>DtoSpecialized> dtos)
+        {
+            var result = new HttpResult<<#className#>Dto>(this._logger);
+            try
+            {
+                var returnModels = await this._app.SavePartial(dtos);
+                return result.ReturnCustomResponse(this._app, returnModels);
+
+            }
+            catch (Exception ex)
+            {
+                return result.ReturnCustomException(ex, "<#namespace#> - #className#>", dtos);
+            }
+
+        }
+
     }
 }
