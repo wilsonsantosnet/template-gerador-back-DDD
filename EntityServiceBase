@@ -38,7 +38,7 @@ namespace <#namespace#>.Domain.Services
             return this._rep.PagingAndDefineFields(filters, queryBase);
         }
 
-        public virtual void Remove(<#className#> <#classNameLower#>)
+        public override void Remove(<#className#> <#classNameLower#>)
         {
             this._rep.Remove(<#classNameLower#>);
         }
