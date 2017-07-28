@@ -93,7 +93,7 @@ namespace <#namespace#>.Api.Controllers
             }
             catch (Exception ex)
             {
-                return result.ReturnCustomException(ex, "<#namespace#> - #className#>", dtos);
+                return result.ReturnCustomException(ex, "<#namespace#> - <#className#>", dtos);
             }
 
         }
