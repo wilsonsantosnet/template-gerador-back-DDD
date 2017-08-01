@@ -27,14 +27,14 @@ namespace <#namespace#>.Application
 			this._user = user;
         }
 
-        protected override async Task<<#className#>> MapperDtoToDomain<TDS>(TDS dto)
+       protected override async Task<<#className#>> MapperDtoToDomain<TDS>(TDS dto)
         {
 			return await Task.Run(() =>
             {
 				var _dto = dto as <#className#>DtoSpecialized;
 				this._validatorAnnotations.Validate(_dto);
 				this._serviceBase.AddDomainValidation(this._validatorAnnotations.GetErros());
-				var domain = this._service.GetDefaultInstance(_dto, this._user);
+				var domain = this._service.GetNewInstance(_dto, this._user);
 				return domain;
 			});
         }
@@ -47,7 +47,7 @@ namespace <#namespace#>.Application
 				var _dto = dto as <#className#>DtoSpecialized;
 				this._validatorAnnotations.Validate(_dto);
 				this._serviceBase.AddDomainValidation(this._validatorAnnotations.GetErros());
-				var domain = await this._service.GetDefaultInstance(_dto, this._user);
+				var domain = await this._service.GetNewInstance(_dto, this._user);
 				domains.Add(domain);
 			}
 			return domains;
@@ -60,7 +60,7 @@ namespace <#namespace#>.Application
 			return await Task.Run(() =>
             {
 				var _dto = dto as <#className#>Dto;
-				var domain = this._service.GetDefaultInstance(_dto, this._user);
+				var domain = this._service.GetUpdateInstance(_dto, this._user);
 				return domain;
 			});
         }
