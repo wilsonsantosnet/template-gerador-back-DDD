@@ -95,6 +95,7 @@ namespace <#namespace#>.Api
 
             app.AddTokenMiddleware();
             app.UseMvc();
+	    app.UseCors("AllowAnyOrigin");
             AutoMapperConfig<#contextName#>.RegisterMappings();
         }
 
