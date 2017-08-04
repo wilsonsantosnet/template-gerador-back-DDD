@@ -161,13 +161,13 @@ namespace <#namespace#>.Domain.Services
             return <#classNameLower#>;
         }
 
-	protected virtual <#className#> UpdateDefault(<#className#> <#classNameLower#>)
+		protected virtual <#className#> UpdateDefault(<#className#> <#classNameLower#>)
         {
             <#classNameLower#> = this._rep.Update(<#classNameLower#>);
             return <#classNameLower#>;
         }
 				
-	public virtual async Task<<#className#>> GetNewInstance(dynamic model, CurrentUser user)
+		public virtual async Task<<#className#>> GetNewInstance(dynamic model, CurrentUser user)
         {
             return await Task.Run(() =>
             {
@@ -175,7 +175,7 @@ namespace <#namespace#>.Domain.Services
             });
          }
 
-	public virtual async Task<<#className#>> GetUpdateInstance(dynamic model, CurrentUser user)
+		public virtual async Task<<#className#>> GetUpdateInstance(dynamic model, CurrentUser user)
         {
             return await Task.Run(() =>
             {
