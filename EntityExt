@@ -26,7 +26,8 @@ namespace <#namespace#>.Domain.Entitys
 
 <#methodsSetersConstruction#>
 
-				        return construction;
+				construction.SetAttributeBehavior(data.AttributeBehavior);
+        		return construction;
             }
 
         }
