@@ -11,6 +11,7 @@ using Common.Domain.Enums;
 using Common.API;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Seed.CrossCuting;
 
 namespace <#namespace#>.Api.Controllers
 {
