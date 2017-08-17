@@ -53,6 +53,14 @@ namespace <#namespace#>.Api.Controllers
                     var searchResult = await this._rep.GetDataListCustom(filters);
                     return result.ReturnCustomResponse(searchResult, filters);
                 }
+				
+				if (filters.FilterBehavior == FilterBehavior.Export)
+                {
+                    var searchResult = await this._rep.ToListAsync(this._rep.GetBySimplefilters(filters));
+                    var export = new ExportExcel<Aluno>(filters);
+                    var file = export.ExportFile(this.Response, searchResult, "Alunos");
+                    return File(file, export.ContentTypeExcel());
+                }
 
                 throw new InvalidOperationException("invalid FilterBehavior");
 
