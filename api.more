@@ -12,6 +12,7 @@ using Common.API;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Seed.CrossCuting;
+using <#namespace#>.Domain.Entitys;
 
 namespace <#namespace#>.Api.Controllers
 {
