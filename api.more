@@ -58,8 +58,8 @@ namespace <#namespace#>.Api.Controllers
 				
 				if (filters.FilterBehavior == FilterBehavior.Export)
                 {
-                    var searchResult = await this._rep.ToListAsync(this._rep.GetBySimplefilters(filters));
-                    var export = new ExportExcelCustom<<#className#>>(filters);
+					var searchResult = await this._rep.GetDataListCustom(filters);
+                    var export = new ExportExcelCustom<dynamic>(filters);
                     var file = export.ExportFile(this.Response, searchResult, "<#className#>");
                     return File(file, export.ContentTypeExcel(), export.GetFileName());
                 }
