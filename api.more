@@ -11,7 +11,7 @@ using Common.Domain.Enums;
 using Common.API;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Seed.CrossCuting;
+using <#namespace#>.CrossCuting;
 using <#namespace#>.Domain.Entitys;
 
 namespace <#namespace#>.Api.Controllers
@@ -91,7 +91,7 @@ namespace <#namespace#>.Api.Controllers
 
         }
 
-	[HttpPut]
+		[HttpPut]
         public async Task<IActionResult> Put([FromBody]IEnumerable<<#className#>DtoSpecialized> dtos)
         {
             var result = new HttpResult<<#className#>Dto>(this._logger);
