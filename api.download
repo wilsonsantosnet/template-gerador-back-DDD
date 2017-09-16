@@ -21,7 +21,7 @@ namespace <#namespace#>.Api.Controllers
 
         public DownloadController(ILoggerFactory logger, IHostingEnvironment env)
         {
-            this._logger = logger.CreateLogger<UplaodController>();
+            this._logger = logger.CreateLogger<DownloadController>();
             this._env = env;
             this._uploadRoot = "upload";
         }
