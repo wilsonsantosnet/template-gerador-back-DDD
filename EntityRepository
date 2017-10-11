@@ -26,7 +26,8 @@ namespace <#namespace#>.Data.Repository
         {
             var querybase = this.GetAll(this.DataAgregation(filters))
 								.WithBasicFilters(filters)
-								.WithCustomFilters(filters);
+								.WithCustomFilters(filters)
+								.OrderByProperty(filters.OrderByType, filters.OrderFields);
             return querybase;
         }
 
