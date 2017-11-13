@@ -44,7 +44,7 @@ namespace <#namespace#>.Api
             services.AddDbContext<DbContext<#contextName#>>(
              options => options.UseSqlServer(
                  Configuration
-                    .GetSection("EFCoreConnStrings:<#contextName#>").Value));
+                    .GetSection("ConfigConnectionString:Default").Value));
 
             services.AddDistributedRedisCache(options =>
             {
