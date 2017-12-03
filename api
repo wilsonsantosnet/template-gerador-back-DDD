@@ -9,6 +9,7 @@ using <#namespace#>.Dto;
 using Common.API;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using <#namespace#>.CrossCuting;
 
 namespace <#namespace#>.Api.Controllers
 {
@@ -41,7 +42,7 @@ namespace <#namespace#>.Api.Controllers
             }
             catch (Exception ex)
             {
-                return result.ReturnCustomException(ex,"<#namespace#> - <#className#>", filters);
+                return result.ReturnCustomException(ex,"<#namespace#> - <#className#>", filters, new ErrorMapCustom());
             }
 
         }
@@ -63,7 +64,7 @@ namespace <#namespace#>.Api.Controllers
             }
             catch (Exception ex)
             {
-                return result.ReturnCustomException(ex,"<#namespace#> - <#className#>", dto);
+                return result.ReturnCustomException(ex,"<#namespace#> - <#className#>", dto, new ErrorMapCustom());
             }
         }
 
@@ -81,7 +82,7 @@ namespace <#namespace#>.Api.Controllers
             }
             catch (Exception ex)
             {
-                return result.ReturnCustomException(ex,"<#namespace#> - <#className#>", dto);
+                return result.ReturnCustomException(ex,"<#namespace#> - <#className#>", dto, new ErrorMapCustom());
             }
         }
 
@@ -97,7 +98,7 @@ namespace <#namespace#>.Api.Controllers
             }
             catch (Exception ex)
             {
-                return result.ReturnCustomException(ex,"<#namespace#> - <#className#>", dto);
+                return result.ReturnCustomException(ex,"<#namespace#> - <#className#>", dto, new ErrorMapCustom());
             }
         }
 
