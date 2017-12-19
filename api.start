@@ -18,6 +18,9 @@ namespace <#namespace#>.Api
 {
     public class Startup
     {
+		
+		private readonly IHostingEnvironment _env;
+		
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -27,6 +30,7 @@ namespace <#namespace#>.Api
                 .AddEnvironmentVariables();
 
             Configuration = builder.Build();
+			this._env = env;
         }
 
         public IConfigurationRoot Configuration { get; }
