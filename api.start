@@ -54,6 +54,10 @@ namespace <#namespace#>.Api
 
             services.Configure<ConfigSettingsBase>(Configuration.GetSection("ConfigSettings"));
             services.AddSingleton<IConfiguration>(Configuration);
+			services.AddSingleton(new EnviromentInfo
+            {
+                RootPath = this._env.ContentRootPath
+            });
 
             // Add cross-origin resource sharing services Configurations
             Cors.Enable(services);
