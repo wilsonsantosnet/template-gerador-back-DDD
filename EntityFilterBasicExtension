@@ -11,6 +11,9 @@ namespace <#namespace#>.Data.Repository
         {
             var queryFilter = queryBase;
 
+			if (filters.Ids.IsSent())
+                queryFilter = queryFilter.Where(_ => filters.GetIds().Contains(_.<#KeyName#>));
+
 <#filtersExpressions#>
 
             return queryFilter;

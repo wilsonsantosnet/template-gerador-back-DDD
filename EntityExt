@@ -22,14 +22,8 @@ namespace <#namespace#>.Domain.Entitys
         {
             public <#className#> GetDefaultInstance(dynamic data, CurrentUser user)
             {
-                var construction = new <#className#>(<#parametersRequiredConstruction#>);
-
-<#methodsSetersConstruction#>
-
-				construction.SetAttributeBehavior(data.AttributeBehavior);
-        		return construction;
+				return GetDefaultInstanceBase(data, user);
             }
-
         }
 
         public bool IsValid()

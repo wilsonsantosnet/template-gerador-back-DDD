@@ -18,9 +18,8 @@ namespace <#namespace#>.Api
 {
     public class Startup
     {
-		
 		private readonly IHostingEnvironment _env;
-		
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
