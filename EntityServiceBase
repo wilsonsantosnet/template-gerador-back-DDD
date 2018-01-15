@@ -106,7 +106,7 @@ namespace <#namespace#>.Domain.Services
             {
                 Errors = new List<string>(),
                 IsValid = true,
-                Message = "<#classNameLower#> Alterado com sucesso."
+                Message = "Alterado com sucesso."
             };
 
             base._cacheHelper.ClearCache();
@@ -131,7 +131,7 @@ namespace <#namespace#>.Domain.Services
                 return <#classNameLower#>;
             
             <#classNameLower#> = this.SaveDefault(<#classNameLower#>, <#classNameLower#>Old);
-            base._validationResult.Message = "<#className#> cadastrado com sucesso :)";
+            base._validationResult.Message = "Inserido com sucesso.";
 
             base._cacheHelper.ClearCache();
             return <#classNameLower#>;
