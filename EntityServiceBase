@@ -54,17 +54,17 @@ namespace <#namespace#>.Domain.Services
 
         public virtual ValidationSpecificationResult GetDomainValidation(FilterBase filters = null)
         {
-            return base._validationResult;
+            return this._validationResult;
         }
 
         public virtual ConfirmEspecificationResult GetDomainConfirm(FilterBase filters = null)
         {
-            return base._validationConfirm;
+            return this._validationConfirm;
         }
 
         public virtual WarningSpecificationResult GetDomainWarning(FilterBase filters = null)
         {
-            return base._validationWarning;
+            return this._validationWarning;
         }
 
         public override async Task<<#className#>> Save(<#className#> <#classNameLower#>, bool questionToContinue = false)
@@ -74,7 +74,7 @@ namespace <#namespace#>.Domain.Services
 
             if (questionToContinue)
             {
-                if (base.Continue(<#classNameLower#>Orchestrated, <#classNameLower#>Old) == false)
+                if (this.Continue(<#classNameLower#>Orchestrated, <#classNameLower#>Old) == false)
                     return <#classNameLower#>Orchestrated;
             }
 
@@ -88,7 +88,7 @@ namespace <#namespace#>.Domain.Services
 
             if (questionToContinue)
             {
-                if (base.Continue(<#classNameLower#>Orchestrated, <#classNameLower#>Old) == false)
+                if (this.Continue(<#classNameLower#>Orchestrated, <#classNameLower#>Old) == false)
                     return <#classNameLower#>Orchestrated;
             }
 
@@ -99,17 +99,17 @@ namespace <#namespace#>.Domain.Services
         {
             <#classNameLower#> = this.SaveDefault(<#classNameLower#>, <#classNameLower#>Old);
 
-			if (base._validationResult.IsNotNull() && !base._validationResult.IsValid)
+			if (this._validationResult.IsNotNull() && !this._validationResult.IsValid)
 				return <#classNameLower#>;
 
-            base._validationResult = new ValidationSpecificationResult
+            this._validationResult = new ValidationSpecificationResult
             {
                 Errors = new List<string>(),
                 IsValid = true,
                 Message = "Alterado com sucesso."
             };
 
-            base._cacheHelper.ClearCache();
+            this._cacheHelper.ClearCache();
             return <#classNameLower#>;
 
         }
@@ -121,26 +121,26 @@ namespace <#namespace#>.Domain.Services
 
             if (!<#classNameLower#>.IsValid())
             {
-                base._validationResult = <#classNameLower#>.GetDomainValidation();
+                this._validationResult = <#classNameLower#>.GetDomainValidation();
                 return <#classNameLower#>;
             }
 
             this.Specifications(<#classNameLower#>);
 
-            if (!base._validationResult.IsValid)
+            if (!this._validationResult.IsValid)
                 return <#classNameLower#>;
             
             <#classNameLower#> = this.SaveDefault(<#classNameLower#>, <#classNameLower#>Old);
-            base._validationResult.Message = "Inserido com sucesso.";
+            this._validationResult.Message = "Inserido com sucesso.";
 
-            base._cacheHelper.ClearCache();
+            this._cacheHelper.ClearCache();
             return <#classNameLower#>;
         }
 
 		protected virtual void Specifications(<#className#> <#classNameLower#>)
         {
-            base._validationResult  = new <#className#>AptoParaCadastroValidation(this._rep).Validate(<#classNameLower#>);
-			base._validationWarning  = new <#className#>AptoParaCadastroWarning(this._rep).Validate(<#classNameLower#>);
+            this._validationResult  = new <#className#>AptoParaCadastroValidation(this._rep).Validate(<#classNameLower#>);
+			this._validationWarning  = new <#className#>AptoParaCadastroWarning(this._rep).Validate(<#classNameLower#>);
         }
 
         protected virtual <#className#> SaveDefault(<#className#> <#classNameLower#>, <#className#> <#classNameLower#>Old)

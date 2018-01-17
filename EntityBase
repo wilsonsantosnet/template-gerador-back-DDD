@@ -23,6 +23,7 @@ namespace <#namespace#>.Domain.Entitys
 
 <#methodsSetersConstruction#>
 
+				construction.SetConfirmBehavior(data.ConfirmBehavior);
 				construction.SetAttributeBehavior(data.AttributeBehavior);
         		return construction;
             }
