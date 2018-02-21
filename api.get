@@ -3,7 +3,7 @@
 			var result = new HttpResult<<#className#>Dto>(this._logger);
             try
             {
-				filters.<#KeyName#> = id;
+				if (id.IsSent()) filters.<#KeyName#> = id;
                 var returnModel = await this._app.GetOne(filters);
                 return result.ReturnCustomResponse(this._app, returnModel);
             }
