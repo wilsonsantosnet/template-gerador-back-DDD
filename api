@@ -88,11 +88,13 @@ namespace <#namespace#>.Api.Controllers
 
 
         [HttpDelete]
-        public async Task<IActionResult> Delete(<#className#>Dto dto)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id, <#className#>Dto dto)
         {
             var result = new HttpResult<<#className#>Dto>(this._logger);
             try
             {
+		if (id.IsSent()) dto.<#KeyName#> = id;
                 await this._app.Remove(dto);
                 return result.ReturnCustomResponse(this._app, dto);
             }
