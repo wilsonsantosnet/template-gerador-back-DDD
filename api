@@ -89,7 +89,7 @@ namespace <#namespace#>.Api.Controllers
 
         [HttpDelete]
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id, <#className#>Dto dto)
+        public async Task<IActionResult> Delete(<#KeyType#> id, <#className#>Dto dto)
         {
             var result = new HttpResult<<#className#>Dto>(this._logger);
             try
