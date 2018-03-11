@@ -10,6 +10,6 @@
             }
             catch (Exception ex)
             {
-                return result.ReturnCustomException(ex, "<#namespace#> - <#className#>", new ErrorMapCustom());
+                return result.ReturnCustomException(ex, "<#namespace#> - <#className#>", errorMap : new ErrorMapCustom());
             }
         }
