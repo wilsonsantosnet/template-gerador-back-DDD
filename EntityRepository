@@ -62,6 +62,16 @@ namespace <#namespace#>.Data.Repository
             return querybase;
         }
 
+		
+        public async Task<PaginateResult<dynamic>> GetDataListCustomPaging(<#className#>Filter filters)
+        {
+            var querybase = await this.PagingDataListCustom<dynamic>(filters, this.GetBySimplefilters(filters).Select(_ => new
+            {
+                Id = _.<#KeyName#>,
+            }));
+            return querybase;
+        }
+
         public async Task<dynamic> GetDataCustom(<#className#>Filter filters)
         {
             var querybase = await this.ToListAsync(this.GetBySimplefilters(filters).Select(_ => new

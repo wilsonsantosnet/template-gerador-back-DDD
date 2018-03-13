@@ -17,6 +17,8 @@ namespace <#namespace#>.Domain.Interfaces.Repository
 
         Task<IEnumerable<dynamic>> GetDataListCustom(<#className#>Filter filters);
 
+		Task<PaginateResult<dynamic>> GetDataListCustomPaging(SampleFilter filters);
+
         Task<dynamic> GetDataCustom(<#className#>Filter filters);
     }
 }

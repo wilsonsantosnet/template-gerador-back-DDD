@@ -58,6 +58,13 @@ namespace <#namespace#>.Api.Controllers
                     var searchResult = await this._rep.GetDataListCustom(filters);
                     return result.ReturnCustomResponse(searchResult, filters);
                 }
+
+				if (filters.FilterBehavior == FilterBehavior.GetDataListCustomPaging)
+                {
+                    var searchResult = await this._rep.GetDataListCustomPaging(filters);
+                    return result.ReturnCustomResponse(searchResult, filters);
+                }
+
 				
 				if (filters.FilterBehavior == FilterBehavior.Export)
                 {
