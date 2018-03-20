@@ -94,7 +94,7 @@ namespace <#namespace#>.Api.Controllers
             var result = new HttpResult<<#className#>Dto>(this._logger);
             try
             {
-		if (id.IsSent()) dto.<#KeyName#> = id;
+				if (id.IsSent()) dto.<#KeyName#> = id;
                 await this._app.Remove(dto);
                 return result.ReturnCustomResponse(this._app, dto);
             }
