@@ -50,6 +50,32 @@ namespace <#namespace#>.Api.Controllers
             }
 
         }
+	
+	[HttpGet("IsAuth")]
+        public async Task<IActionResult> IsAuth()
+        {
+            var result = new HttpResult<dynamic>(this._logger);
+            try
+            {
+                return await Task.Run(() =>
+                {
+                    var claims = this._user.GetClaims();
+                    if (claims.IsAny())
+                    {
+                        return result.ReturnCustomResponse(new { claimsCount = claims.Count() });
+                    }
+
+                    return result.ReturnCustomResponse(new { claimsCount = 0 });
+
+                });
+
+            }
+            catch (Exception ex)
+            {
+                return result.ReturnCustomException(ex, "<#namespace#> - CurrentUser");
+            }
+
+        }
 
     }
 }
